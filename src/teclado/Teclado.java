@@ -13,6 +13,7 @@ import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.Random;
 
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -22,6 +23,8 @@ public class Teclado extends JFrame implements KeyListener {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
+	Random rand = new Random();
+
 
 	char[] abecedarioMinusculas = { 
 			'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 
@@ -119,7 +122,7 @@ public class Teclado extends JFrame implements KeyListener {
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
 
-	}
+	}	
 
 	@Override
 	public void keyPressed(KeyEvent e) {
@@ -135,11 +138,16 @@ public class Teclado extends JFrame implements KeyListener {
 		// en minusculas
 		char letraMinuscula = (char) (letraNumero + 32);
 
+		// se crean los colores de RGB
+		float r = rand.nextFloat();
+		float g = rand.nextFloat();
+		float b = rand.nextFloat();
+		Color randomColor = new Color(r, g, b);
 
 		// hacemos un for para recorrer todo
 		for (int i = 0; i < abecedarioMinusculas.length; i++) {
 			if (abecedarioMinusculas[i] == letraMinuscula) {
-				labels[i].setBackground(Color.YELLOW);
+				labels[i].setBackground(randomColor);
 			} else
 				labels[i].setBackground(new Color(192, 192, 192));
 
